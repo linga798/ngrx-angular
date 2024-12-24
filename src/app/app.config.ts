@@ -7,6 +7,7 @@ import { provideState, provideStore } from '@ngrx/store';
 import { reduce } from 'rxjs';
 import { counterReducer } from './states/counter/counter.reducer';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { cartReducer } from './states/cart/cart.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,6 +15,7 @@ export const appConfig: ApplicationConfig = {
   provideZoneChangeDetection({ eventCoalescing: true }), 
   provideRouter(routes), provideClientHydration(withEventReplay()), 
   provideStore(),
-  provideState({name:'counter', reducer: counterReducer})
+  provideState({name:'counter', reducer: counterReducer}),
+  provideState({name:'cart', reducer: cartReducer})
 ]
 };

@@ -1,13 +1,19 @@
 import { createReducer, on } from "@ngrx/store";
 import { IProduct } from "../../shared/models/product.interface";
-import { addToCart, decrementProduct, incrementProduct, removeProduct } from "./product.actions";
+import { addToCart, decrementProduct, incrementProduct, removeProduct } from "./cart.actions";
 
 export interface CartState {
-    products: IProduct[]
+    products: IProduct[],
+    totalPrice: number
 }
 
 export const InitialCartState: CartState = {
-    products: []
+    products: [],
+    totalPrice: 0
+}
+
+export function calculateTotalPrice(products:IProduct[]): number{
+   return products.reduce((totalPrice, product) => totalPrice + (product.price*product.quantity), 0);
 }
 
 export const cartReducer = createReducer(
@@ -25,7 +31,8 @@ export const cartReducer = createReducer(
         )
         return {
             ...state,
-            products: updatedProducts
+            products: updatedProducts,
+            totalPrice: calculateTotalPrice(updatedProducts)
         }
     }
     ),
@@ -35,7 +42,8 @@ export const cartReducer = createReducer(
         )
         return {
             ...state,
-            products: updatedProducts
+            products: updatedProducts,
+            totalPrice: calculateTotalPrice(updatedProducts)
         }
     }
     ),
@@ -45,7 +53,8 @@ export const cartReducer = createReducer(
         )
         return {
             ...state,
-            products: updatedProducts
+            products: updatedProducts,
+            totalPrice: calculateTotalPrice(updatedProducts)
         }
     }
     )

@@ -6,5 +6,7 @@ import { ProductsComponent } from './products/products.component';
 export const routes: Routes = [
     {path:'', pathMatch: 'full',redirectTo:'products'},
     {path:'counter',  loadComponent: () => import('./counter/counter.component').then(m => m.CounterComponent)},
-    {path:'products', loadComponent: () => import('./products/products.component').then(m => m.ProductsComponent)}
+    {path:'products', loadComponent: () => import('./products/products.component').then(m => m.ProductsComponent)},
+    {path:'cart', loadComponent: () => import('./cart/cart.component').then(m => m.CartComponent)}
+
 ];

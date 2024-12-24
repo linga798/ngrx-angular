@@ -1,4 +1,10 @@
+<div style="display: flex; ">
 <h1>Products</h1>
+
+<button routerLink="/cart" style="margin-left: auto;width: 100px;height: 5opx !important;">Cart
+    <span>{{cartCount$ | async}}</span>
+</button>
+</div>
 <div class="card-grid">
     @for(item of products$ | async; track item.id){
         <app-product-card [product]="item" (handleAddToCart)="addProductToCart($event)"></app-product-card>

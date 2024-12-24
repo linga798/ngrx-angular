@@ -1,3 +1,38 @@
-<p>
-  cart works!
-</p>
+<div class="cart-container">
+  <h1 class="cart-title">Shopping Cart</h1>
+
+  <!-- Cart Items -->
+  <div class="cart-items">
+    @for(item of cartItems$ | async; track item.id){
+    <div class="cart-item">
+      <div class="item-details">
+        <img [src]="item.image" alt="{{ item.title }}" class="item-image" />
+        <div>
+          <h2 class="item-name">{{ item.title }}</h2>
+          <p class="item-price">${{ item.price.toFixed(2) }}</p>
+        </div>
+      </div>
+      <div class="item-actions">
+        <button (click)="decreaseProduct(item.id)">-</button>
+        <span class="item-quantity">{{ item.quantity }}</span>
+        <button (click)="increaseProduct(item.id)">+</button>
+        <button class="remove-item" (click)="removeItem(item.id)">Remove</button>
+      </div>
+    </div>
+  }
+  </div>
+
+  <!-- Cart Summary -->
+  <div class="cart-summary">
+    <h2>Cart Summary</h2>
+    <div class="summary-item">
+      <span>Total Items:</span>
+      <span>5</span>
+    </div>
+    <div class="summary-item">
+      <span>Total Price:</span>
+      <span>${{cartTotalPrice$ | async}}</span>
+    </div>
+    <button class="checkout-button" >Checkout</button>
+  </div>
+</div>
