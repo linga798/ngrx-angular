@@ -1,0 +1,18 @@
+<div class="card">
+    <div class="card-image">
+      <img width="200" [src]="product.image" alt="Card Image">
+    </div>
+    <div class="card-content">
+      <h3 class="card-title">{{product.title}}</h3>
+      <p class="card-description">
+        {{product.description.substring(0,100)}}...
+      </p>
+    <div>{{product.price}}</div>
+
+    </div>
+    <div class="card-actions">
+      <button (click)="addToCart(product)" class="action-button">Add to cart</button>
+      <button class="action-button">Learn More</button>
+    </div>
+  </div>
+  

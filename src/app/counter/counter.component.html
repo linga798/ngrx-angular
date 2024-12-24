@@ -1,0 +1,9 @@
+<h1>Counter app</h1>
+<div>
+    <p style="margin-bottom: 20px;">{{count$ | async}}</p>
+    <div>
+        <button (click)="increment()" style="margin-right: 10px;">Increment</button>
+        <button (click)="decrement()" style="margin-right: 10px;">decrement</button>
+        <button (click)="reset()" style="margin-right: 10px;">reset</button>
+    </div>
+</div>
